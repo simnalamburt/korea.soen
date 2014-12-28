@@ -18,17 +18,16 @@ int main() {
       "3. Delete\n"
       "4. Finish\n" << flush;
 
-    int a;
+    string a;
     cin >> a;
 
-    switch (a) {
-    case 1: search();   break;
-    case 2: AddPhone(); break;
-    case 3: Delete();   break;
-    case 4: return 0;
-    default: puts("유효한 입력이 아닙니다.");
-    }
+    if (a == "1")       { search(); }
+    else if (a == "2")  { AddPhone(); }
+    else if (a == "3")  { Delete(); }
+    else if (a == "4")  { return 0; }
+    else { cout << "유효한 입력이 아닙니다." << endl; }
   }
+
   return 0;
 }
 
