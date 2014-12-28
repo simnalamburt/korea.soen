@@ -5,8 +5,25 @@ Korea 2014 Fall, CYDF214_00
 
 --------
 
-Compile
+#### Prerequisite
 
-```bash
-make
-```
+* C++ compiler with C++0x support
+* GNU Make
+
+#### Instructions
+
+1.  Checkout codes *(without git)*
+
+    ```bash
+    wget https://github.com/simnalamburt/korea.soen/archive/master.zip
+    unzip master.zip
+    rm master.zip
+    cd korea.soen-master
+    ```
+
+1.  Build & play
+
+    ```bash
+    make
+    ./a.out
+    ```
