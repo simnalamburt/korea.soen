@@ -42,11 +42,9 @@ int main() {
 }
 
 
+string get_input();
 void search() {
-  cout << "이름을 입력하시오: " << flush;
-
-  string input;
-  cin >> input;
+  string input = get_input();
 
   size_t save, count = 0;
   const size_t len = whitebook.size();
@@ -71,10 +69,7 @@ void search() {
 }
 
 void AddPhone() {
-  cout << "이름을 입력하시오: " << flush;
-
-  string input;
-  cin >> input;
+  string input = get_input();
 
   size_t save, count = 0;
   const size_t len = whitebook.size();
@@ -103,10 +98,7 @@ void AddPhone() {
 }
 
 void Delete() {
-  cout << "이름을 입력하시오: " << flush;
-
-  string input;
-  cin >> input;
+  string input = get_input();
 
   size_t save, count = 0;
   const size_t len = whitebook.size();
@@ -123,4 +115,13 @@ void Delete() {
     whitebook.erase(whitebook.begin() + save);
     cout << "삭제가 완료되었습니다." << endl;
   }
+}
+
+
+string get_input() {
+  cout << "이름을 입력하시오: " << flush;
+
+  string input;
+  cin >> input;
+  return input;
 }
