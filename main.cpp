@@ -1,16 +1,18 @@
-#include<stdio.h>
-#include<string>
-#include<vector>
-#include<iostream>
-#include<utility>;
+#include <stdio.h>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <utility>
+
 using namespace std;
-pair<string, string>pair1;
+
+pair<string, string> pair1;
 vector<pair<string, string>> whitebook;
 string temp;
 string temp1;
 
-void search(){
-  int i, save,count=0;
+void search() {
+  int i, save, count=0;
   printf("이름을 입력하시오");
   cin >> temp;
   for(i=0; i< whitebook.size(); i++){
@@ -25,7 +27,8 @@ void search(){
   }
   else printf("error: 해당 이름에 2개 이상의 전화번호가 저장되어 있습니다.");
 }
-void AddPhone(){
+
+void AddPhone() {
   int i, save,count=0;
   printf("이름을 입력하시오");
   cin >> temp;
@@ -45,7 +48,8 @@ void AddPhone(){
     printf("저장이 완료되었습니다.");
   }
 }
-void Delete(){
+
+void Delete() {
   int i, save,count=0;
   printf("이름을 입력하시오");
   cin >> temp;
@@ -61,19 +65,34 @@ void Delete(){
     printf("삭제가 완료되었습니다.");
   }
 }
-int main(){
-  int a;
-  while(1){
-    printf("무엇을 하시겠습니까\n");
-    printf("1. Search\n");
-    printf("2. Add\n");
-    printf("3. Delete\n");
-    printf("4. Finish\n");
+
+int main() {
+  while (true) {
+    puts("무엇을 하시겠습니까\n"
+      "1. Search\n"
+      "2. Add\n"
+      "3. Delete\n"
+      "4. Finish");
+
+    int a;
     scanf("%d", &a);
-    if(a==1) search();
-    else if(a==2) AddPhone();
-    else if(a==3) Delete();
-    else if(a==4) return 0;
-    else printf("유효한 입력이 아닙니다.\n");
+
+    switch (a) {
+    case 1:
+      search();
+      break;
+    case 2:
+      AddPhone();
+      break;
+    case 3:
+      Delete();
+      break;
+    case 4:
+      return 0;
+    default:
+      puts("유효한 입력이 아닙니다.");
+    }
   }
+
+  return 0;
 }
