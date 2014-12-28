@@ -1,5 +1,5 @@
 #pragma once
 
-void search();
-void AddPhone();
+void Find();
+void Add();
 void Delete();

@@ -14,7 +14,7 @@ string get_input() {
   return input;
 }
 
-void search() {
+void Find() {
   cout << "이름을 입력하시오: " << flush;
   const string name = get_input();
 
@@ -27,7 +27,7 @@ void search() {
   cout << '"' << result->first << "\"의 전화번호는 " << result->second << " 입니다." << endl;
 }
 
-void AddPhone() {
+void Add() {
   cout << "이름을 입력하시오: " << flush;
   const string name = get_input();
 

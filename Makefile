@@ -20,11 +20,13 @@ run: build
 
 test: build tests/unittest.cpp src/book.cpp src/book.h
 	@g++ -std=c++0x tests/unittest.cpp src/book.cpp -o target/unittest
-	@target/unittest
-
+	@if target/unittest < tests/fixtures/input_unit >/dev/null; \
+	  then echo 'Unit Test Passed!'; \
+	  else >&2 echo 'Unit Test Failed!'; \
+	fi
 	@if target/main < tests/fixtures/input | diff - tests/fixtures/output >/dev/null; \
-	then echo 'Integration Test Passed!'; \
-	else >&2 echo 'Integration Test Failed!'; \
+	  then echo 'Integration Test Passed!'; \
+	  else >&2 echo 'Integration Test Failed!'; \
 	fi
 
 clean:

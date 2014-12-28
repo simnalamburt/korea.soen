@@ -17,8 +17,8 @@ int main() {
     string a;
     cin >> a;
 
-    if (a == "1")       { search(); }
-    else if (a == "2")  { AddPhone(); }
+    if (a == "1")       { Find(); }
+    else if (a == "2")  { Add(); }
     else if (a == "3")  { Delete(); }
     else if (a == "4")  { break; }
     else { cout << "유효한 입력이 아닙니다." << endl; }
