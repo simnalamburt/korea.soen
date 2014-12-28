@@ -1,14 +1,11 @@
 #include <string>
 #include <unordered_map>
 #include <iostream>
+#include "main.h"
 
 using namespace std;
 
 unordered_map<string, string> whitebook;
-
-void search();
-void AddPhone();
-void Delete();
 
 int main() {
   while (true) {
