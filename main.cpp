@@ -1,10 +1,10 @@
 #include <string>
-#include <vector>
+#include <unordered_map>
 #include <iostream>
 
 using namespace std;
 
-vector<pair<string, string>> whitebook;
+unordered_map<string, string> whitebook;
 
 void search();
 void AddPhone();
@@ -22,99 +22,57 @@ int main() {
     cin >> a;
 
     switch (a) {
-    case 1:
-      search();
-      break;
-    case 2:
-      AddPhone();
-      break;
-    case 3:
-      Delete();
-      break;
-    case 4:
-      return 0;
-    default:
-      puts("유효한 입력이 아닙니다.");
+    case 1: search();   break;
+    case 2: AddPhone(); break;
+    case 3: Delete();   break;
+    case 4: return 0;
+    default: puts("유효한 입력이 아닙니다.");
     }
   }
-
   return 0;
 }
 
 
 string get_input();
 void search() {
-  string input = get_input();
+  const string name = get_input();
 
-  size_t save, count = 0;
-  const size_t len = whitebook.size();
-  for (size_t i = 0; i < len; ++i) {
-    if (whitebook[i].first.compare(input)) { continue; }
-
-    ++count;
-    save = i;
+  const auto result = whitebook.find(name);
+  if (result == whitebook.end()) {
+    cout << "전화번호부에서 \"" << name << "\"을 찾지 못했습니다." << endl;
+    return;
   }
 
-  switch (count) {
-    case 0:
-      cout << "해당 이름의 전화번호는 존재하지 않습니다." << endl;
-      break;
-    case 1:
-      cout << whitebook[save].second << endl;
-      break;
-    default:
-      cout << "error: 해당 이름에 2개 이상의 전화번호가 저장되어 있습니다." << endl;
-      break;
-  }
+  cout << '"' << result->first << "\"의 전화번호는 " << result->second << " 입니다." << endl;
 }
 
 void AddPhone() {
-  string input = get_input();
+  const string name = get_input();
 
-  size_t save, count = 0;
-  const size_t len = whitebook.size();
-  for(size_t i = 0; i < len; ++i) {
-    if (whitebook[i].first.compare(input)) { continue; }
-
-    ++count;
-    save = i;
+  const auto result = whitebook.find(name);
+  if (result != whitebook.end()) {
+    cout << "전화번호부에 이미 \"" << name << "\"라는 이름의 번호가 저장되어있었습니다." << endl;
+    return;
   }
 
-  if (count) {
-    cout << "해당 이름의 전화번호는 이미 저장되어있습니다." << endl;
-  } else {
-    cout << "해당 이름의 전화번호를 입력해주십시오: " << endl;
+  cout << '"' << name << "\"의 전화번호를 입력해주십시오: " << endl;
+  const string number = get_input();
 
-    string number;
-    cin >> number;
-
-    pair<string, string> pair1;
-    pair1.first = input;
-    pair1.second = number;
-    whitebook.push_back(pair1);
-
-    cout << "저장이 완료되었습니다." << endl;
-  }
+  whitebook.emplace(name, number);
+  cout << "저장이 완료되었습니다." << endl;
 }
 
 void Delete() {
-  string input = get_input();
+  const string name = get_input();
 
-  size_t save, count = 0;
-  const size_t len = whitebook.size();
-  for(size_t i = 0; i < len; ++i) {
-    if (whitebook[i].first.compare(input)) { continue; }
-
-    ++count;
-    save = i;
+  const auto result = whitebook.find(name);
+  if (result == whitebook.end()) {
+    cout << "전화번호부에 \"" << name << "\"라는 이름의 번호가 없습니다." << endl;
+    return;
   }
 
-  if (!count) {
-    cout << "해당 이름의 전화번호는 존재하지 않습니다." << endl;
-  } else if (count == 1) {
-    whitebook.erase(whitebook.begin() + save);
-    cout << "삭제가 완료되었습니다." << endl;
-  }
+  whitebook.erase(result);
+  cout << "삭제가 완료되었습니다." << endl;
 }
 
 
