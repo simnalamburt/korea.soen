@@ -11,6 +11,42 @@ vector<pair<string, string>> whitebook;
 string temp;
 string temp1;
 
+void search();
+void AddPhone();
+void Delete();
+
+int main() {
+  while (true) {
+    puts("무엇을 하시겠습니까\n"
+      "1. Search\n"
+      "2. Add\n"
+      "3. Delete\n"
+      "4. Finish");
+
+    int a;
+    scanf("%d", &a);
+
+    switch (a) {
+    case 1:
+      search();
+      break;
+    case 2:
+      AddPhone();
+      break;
+    case 3:
+      Delete();
+      break;
+    case 4:
+      return 0;
+    default:
+      puts("유효한 입력이 아닙니다.");
+    }
+  }
+
+  return 0;
+}
+
+
 void search() {
   int i, save, count=0;
   printf("이름을 입력하시오");
@@ -64,35 +100,4 @@ void Delete() {
     whitebook.erase(whitebook.begin()+save);
     printf("삭제가 완료되었습니다.");
   }
-}
-
-int main() {
-  while (true) {
-    puts("무엇을 하시겠습니까\n"
-      "1. Search\n"
-      "2. Add\n"
-      "3. Delete\n"
-      "4. Finish");
-
-    int a;
-    scanf("%d", &a);
-
-    switch (a) {
-    case 1:
-      search();
-      break;
-    case 2:
-      AddPhone();
-      break;
-    case 3:
-      Delete();
-      break;
-    case 4:
-      return 0;
-    default:
-      puts("유효한 입력이 아닙니다.");
-    }
-  }
-
-  return 0;
 }
