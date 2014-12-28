@@ -21,9 +21,11 @@ Korea 2014 Fall, CYDF214_00
     cd korea.soen-master
     ```
 
-1.  Build & play
+1.  Display help messages
 
     ```bash
     make
-    ./a.out
+
+    make run
+    make test
     ```
