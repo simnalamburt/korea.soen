@@ -1,10 +1,13 @@
 #include <iostream>
+#include <unordered_map>
 #include "../src/book.h"
 
 using namespace std;
 
+extern unordered_map<string, string> whitebook;
+
 int main() {
-  cout << "유닛테스트 실행됨" << endl;
+  cout << whitebook.size() << endl;
 
   return 0;
 }
